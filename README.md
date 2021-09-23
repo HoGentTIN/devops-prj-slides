@@ -5,4 +5,4 @@ This is an overview of the lecture slides for the "DevOps Project: Operations" c
 - [Project DevOps: Operations](01-kick-off.html)
 
 
-Published: 2021-09-23T18:16:10+00:00
+Published: 2021-09-23T18:23:15+00:00
