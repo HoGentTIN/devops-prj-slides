@@ -1,7 +1,7 @@
 ---
 title: "Project DevOps: Operations"
 subtitle: "Kick-off<br/>HOGENT applied computer science"
-author: Bert Van Vreckem
+author: Dirk Thijs, Bert Van Vreckem
 date: 2021-2022
 ---
 
@@ -61,6 +61,10 @@ date: 2021-2022
 - High Availability
 - Monitoring
 - Advise customer w.r.t. production platform
+
+## Focus on:
+
+![](https://raw.githubusercontent.com/RogueDudes/roguedudes.github.io/master/assets/images/automate.jpg)
 
 ## Environments
 
@@ -136,10 +140,6 @@ Regular progress meetings
     - deploy .Net app on Docker
     - provide manual for devs
     - Vagrant?
-
-## Focus on:
-
-![](https://raw.githubusercontent.com/RogueDudes/roguedudes.github.io/master/assets/images/automate.jpg)
 
 ## Week 2
 
