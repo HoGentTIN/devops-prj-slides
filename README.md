@@ -1,15 +1,8 @@
-# Infrastructure Automation: slides
+# DevOps Project: Operations - slides
 
-In deze repository vind je de slides die gebruikt wordt in de lessen van de cursus Infrastructure Automation (3e jaar bachelor toegepaste informatica aan Hogeschool Gent).
+In deze repository vind je de slides die gebruikt wordt in de lessen van de cursus DevOps Project: Operations (3e jaar bachelor toegepaste informatica aan Hogeschool Gent).
 
-Gerelateerde repositories:
-
-- Syllabus: <https://github.com/HoGentTIN/infra-syllabus>
-    - Te bekijken op: <https://hogenttin.github.io/infra-syllabus/>
-- Slides van de lessen: <https://github.com/HoGentTIN/infra-slides>
-    - Te bekijken op: <https://hogenttin.github.io/infra-slides/>
-- Vagrant demo-omgeving: <https://github.com/HoGentTIN/infra-demo>
-- Opgave labo-opdrachten: <https://github.com/HoGentTIN/infra-labs>
+De slides zijn te bekijken via <https://hogenttin.github.io/devops-prj-slides/01-kick-off.html>.
 
 ## Slides genereren
 
