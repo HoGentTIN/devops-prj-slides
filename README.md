@@ -5,4 +5,4 @@ This is an overview of the lecture slides for the Infrastructure Automation cour
 - [Project DevOps: Operations](01-kick-off.html)
 
 
-Published: 2021-09-23T18:07:48+00:00
+Published: 2021-09-23T18:15:45+00:00
