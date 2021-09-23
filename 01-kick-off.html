@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Bert Van Vreckem">
+  <title>Project DevOps: Operations</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reset.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/hogent.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Project DevOps: Operations</h1>
+  <p class="subtitle">Kick-off<br/>HOGENT applied computer science</p>
+  <p class="author">Bert Van Vreckem</p>
+  <p class="date">2021-2022</p>
+</section>
+
+<section><section id="course-intro" class="title-slide slide level1"><h1>Course intro</h1></section>
+<section id="eerst-en-vooral" class="slide level2">
+<h2>Eerst en vooral</h2>
+<ul>
+<li>Engelse slides (IC)</li>
+<li>NL uitleg + studiewijzer</li>
+</ul>
+</section>
+<section id="variants" class="slide level2">
+<h2>Variants:</h2>
+<ul>
+<li>Regular curriculum: 8SP</li>
+<li>Distance learning (TIAO): 8SP</li>
+<li>Transitional curriculum: 5SP</li>
+<li>Transitional+distance learning: 5SP</li>
+<li>International Curriculum (IC): 8SP</li>
+</ul>
+</section>
+<section id="traditional-org" class="slide level2">
+<h2>Traditional org</h2>
+<p><img data-src="https://blog.rocketsoftware.com/wp-content/uploads/2015/05/Silos.png" /></p>
+</section>
+<section id="devopsdays-2009" class="slide level2">
+<h2>DevOpsDays 2009</h2>
+<p><img data-src="assets/devops-days-2009.png" /></p>
+</section>
+<section id="devops" class="slide level2">
+<h2>DevOps</h2>
+<p><img data-src="https://www.ituser.es/files/201611/devops.jpg" /></p>
+</section>
+<section id="devops-cams" class="slide level2">
+<h2>DevOps = CAMS</h2>
+<ul>
+<li><strong>C</strong>ulture - interdisciplinary product-teams</li>
+<li><strong>A</strong>utomation - CI/CD, Infrastructure as Code</li>
+<li><strong>M</strong>onitoring</li>
+<li><strong>S</strong>haring - e.g. DevOpsDays and similar events</li>
+</ul>
+</section>
+<section id="the-project" class="slide level2">
+<h2>The project</h2>
+<ul>
+<li>Developing an application for an external customer
+<ul>
+<li>Android app</li>
+<li>.Net + DB backend</li>
+</ul></li>
+<li>Assignments:
+<ul>
+<li>Kolveniershof - personnel rostering</li>
+<li>HoutKunst - auctioning</li>
+<li>HIER coworking - meeting room scheduling</li>
+</ul></li>
+</ul>
+</section>
+<section id="your-role" class="slide level2">
+<h2>Your role</h2>
+<ul>
+<li>Site Reliability Engineer</li>
+<li>Release Engineer</li>
+</ul>
+</section>
+<section id="site-reliability-engineer-sre" class="slide level2">
+<h2>Site Reliability Engineer (SRE)</h2>
+<ul>
+<li>Set up test, acceptance, production environment
+<ul>
+<li>automated!</li>
+</ul></li>
+<li>High Availability</li>
+<li>Monitoring</li>
+<li>Advise customer w.r.t. production platform</li>
+</ul>
+</section>
+<section id="environments" class="slide level2">
+<h2>Environments</h2>
+<ul>
+<li>Test environment
+<ul>
+<li>Runs on developer’s laptop</li>
+</ul></li>
+<li>Acceptance environment
+<ul>
+<li>Cloud platform</li>
+<li>Configured exactly like production</li>
+<li>For testing purposes</li>
+</ul></li>
+<li>Production environment
+<ul>
+<li>Used by actual users, customer</li>
+</ul></li>
+</ul>
+<p>Automated setup =&gt; reproducable</p>
+</section>
+<section id="release-engineering" class="slide level2">
+<h2>Release Engineering</h2>
+<ul>
+<li>Continuous Integration build pipeline</li>
+<li>Automating development tools</li>
+</ul>
+</section>
+<section id="ci-pipeline" class="slide level2">
+<h2>CI pipeline</h2>
+<p>On each push to repo:</p>
+<ul>
+<li>Linting, static analysis</li>
+<li>Execute unit test suite</li>
+<li>Code coverage analysis</li>
+<li>Deploy backend-code in acceptance env</li>
+<li>Execute acceptance tests</li>
+<li>Package mobile application for app-store</li>
+<li>Send feedback to devs</li>
+</ul>
+</section>
+<section id="tooling" class="slide level2">
+<h2>Tooling</h2>
+<ul>
+<li>Commit hooks</li>
+<li>Allow (part of) CI pipeline to run on dev’s laptop</li>
+<li>Create ticket/issue when CI pipeline fails</li>
+<li>…</li>
+</ul>
+</section>
+<section id="expectations" class="slide level2">
+<h2>Expectations</h2>
+<p>Professional behaviour</p>
+<ul>
+<li>Respect</li>
+<li>Work ethic</li>
+<li>Responsibility</li>
+<li>Initiative</li>
+<li>Communication</li>
+<li>Collaboration</li>
+</ul>
+</section>
+<section id="coaching" class="slide level2">
+<h2>Coaching</h2>
+<p>Regular progress meetings</p>
+<ul>
+<li>Technical coaches
+<ul>
+<li>Regular: Monday afternoon</li>
+<li>TIAO: on appointment</li>
+</ul></li>
+<li>Project Management coaches (analyse)
+<ul>
+<li>Together with devs</li>
+<li>On appointment</li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="planning" class="title-slide slide level1"><h1>Planning</h1></section>
+<section id="week-1" class="slide level2">
+<h2>Week 1</h2>
+<ul>
+<li>Kick-off</li>
+<li>Group assignment</li>
+</ul>
+</section>
+<section id="todo" class="slide level2">
+<h2>TODO</h2>
+<ul>
+<li>Read study guide</li>
+<li>Watch intro videos (Chamilo)</li>
+<li>PoC test environment
+<ul>
+<li>deploy .Net app on Docker</li>
+<li>provide manual for devs</li>
+<li>Vagrant?</li>
+</ul></li>
+</ul>
+</section>
+<section id="focus-on" class="slide level2">
+<h2>Focus on:</h2>
+<p><img data-src="https://raw.githubusercontent.com/RogueDudes/roguedudes.github.io/master/assets/images/automate.jpg" /></p>
+</section>
+<section id="week-2" class="slide level2">
+<h2>Week 2</h2>
+<ul>
+<li>Demo PoC test deployment</li>
+<li>First progress meeting PM (analyse)</li>
+</ul>
+</section>
+<section id="todo-1" class="slide level2">
+<h2>TODO</h2>
+<ul>
+<li>Architecture plan</li>
+<li>Tools and platforms
+<ul>
+<li>Cloud platform</li>
+<li>CI/CD</li>
+</ul></li>
+</ul>
+</section>
+<section id="suggestions" class="slide level2">
+<h2>Suggestions</h2>
+<ul>
+<li>Cloud platform
+<ul>
+<li>Azure, AWS, DigitalOcean, … (free credits)</li>
+<li>Combell, Sentia, OVHCloud, … (more suitable for production?)</li>
+</ul></li>
+<li>CI/CD
+<ul>
+<li>Jenkins</li>
+<li>Github Actions</li>
+<li>GitLab CI</li>
+<li>Travis CI</li>
+<li>…</li>
+</ul></li>
+<li>Monitoring
+<ul>
+<li>Prometheus, Collectd, …</li>
+</ul></li>
+</ul>
+</section>
+<section id="week-3" class="slide level2">
+<h2>Week 3</h2>
+<ul>
+<li>Discuss chosen tools/platforms, feedback</li>
+</ul>
+</section>
+<section id="todo-2" class="slide level2">
+<h2>TODO</h2>
+<ul>
+<li>Set up acceptance environment</li>
+</ul>
+</section>
+<section id="week-4" class="slide level2">
+<h2>Week 4</h2>
+<ul>
+<li>Demo: .Net deployment in acceptance env</li>
+</ul>
+</section>
+<section id="week-5-and-onwards" class="slide level2">
+<h2>Week 5 and onwards</h2>
+<ul>
+<li>Regular progress meetings</li>
+<li>Expand on necessary infrastructure
+<ul>
+<li>Automate all the things!</li>
+</ul></li>
+<li>Advice on production environment
+<ul>
+<li>Customer oriented!</li>
+<li>Cost estimate based on monitoring data/stress tests</li>
+</ul></li>
+</ul>
+</section>
+<section id="assessment" class="slide level2">
+<h2>Assessment</h2>
+<ul>
+<li>70% product, project portfolio
+<ul>
+<li>code + documentation + reporting</li>
+</ul></li>
+<li>30% observation of student functioning
+<ul>
+<li>professional behaviour, project management</li>
+</ul></li>
+</ul>
+</section>
+<section id="absence" class="slide level2">
+<h2>Absence</h2>
+<ul>
+<li>Absent from progress/customer meetings, presentation, …</li>
+<li>Insufficient involvement in group work</li>
+</ul>
+</section>
+<section id="resit" class="slide level2">
+<h2>Resit</h2>
+<ul>
+<li>70% individual assignment (TBD)</li>
+<li>30% observation
+<ul>
+<li>Original grade is preserved</li>
+<li>Absent? no resit possible!</li>
+</ul></li>
+</ul>
+</section>
+<section id="project-portfolio" class="slide level2">
+<h2>Project portfolio</h2>
+<ul>
+<li>Source code</li>
+<li>Documentation</li>
+<li>Personal log + time sheet</li>
+</ul>
+</section></section>
+<section><section id="thats-it" class="title-slide slide level1"><h1>That’s it!</h1></section>
+<section id="good-luck" class="slide level2">
+<h2>Good luck!</h2>
+<figure>
+<img data-src="https://upload.wikimedia.org/wikipedia/en/f/ff/SuccessKid.jpg" alt="" /><figcaption>You can do it!</figcaption>
+</figure>
+</section>
+<section id="question-time" class="slide level2">
+<h2>Question time</h2>
+<p><img data-src="https://i.dlpng.com/static/png/4750034-confused-nick-young-png-2-png-image-nick-young-png-549_413_preview.png" /></p>
+</section>
+<section id="todo-3" class="slide level2">
+<h2>TODO</h2>
+<ul>
+<li>Read study guide</li>
+<li>Watch intro videos (Chamilo)</li>
+<li>PoC test environment
+<ul>
+<li>deploy .Net app on Docker</li>
+<li>provide manual for devs</li>
+<li>Vagrant?</li>
+</ul></li>
+</ul>
+</section></section>
+    </div>
+  </div>
+
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
